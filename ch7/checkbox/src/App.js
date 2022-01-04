@@ -4,6 +4,8 @@
 // import Counter from './Counter'
 import React, { useEffect, useLayoutEffect } from 'react'
 import { useState } from 'react'
+import Checkbox from './CheckBox'
+import PureCat from './Cat'
 
 // function WordCount({ children = '' }) {
 //   useAnyKeyToRender()
@@ -46,12 +48,19 @@ function UseWindowSize() {
 }
 
 function App() {
-  useEffect(() => console.log('useEffect実行！'))
-  useLayoutEffect(() => console.log('useLayoutEffect実行！'))
+  // useEffect(() => console.log('useEffect実行！'))
+  // useLayoutEffect(() => console.log('useLayoutEffect実行！'))
+  const [cats, setCats] = useState(['Biscuit', 'Jungle', 'Outlaw'])
+
   return (
     <>
       レンダリング
       <UseWindowSize />
+      <Checkbox />
+      {cats.map((name, i) => (
+        <PureCat key={i} name={name}/>
+      ))}
+      <button onClick={() => setCats([...cats, prompt("name a cat")])}>Add Cat</button>
     </>
   )
 }

@@ -1,21 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React, { useReducer } from 'react'
 
 const Checkbox = () => {
-  const [checked, setChecked] = useState(false)
-
-  // useEffect(() => {
-  //   // alert(`checked: ${checked.toString()}`)
-  //   console.log(checked ? 'Yes, checked' : 'No, not checked')
-  // })
+  // const [checked, toggle] = useReducer((checked) => !checked, false)
+  const [number, setNumber] = useReducer(
+    (number, newNumber) => number ** newNumber,
+    10,
+  )
 
   return (
     <>
-      <input
-        type="checkbox"
-        value={checked}
-        onChange={() => setChecked((checked) => !checked)}
-      />
-      {checked ? 'checked' : 'not checked'}
+      {/* <input type="checkbox" value={checked} onChange={toggle} />
+      {checked ? 'checked' : 'not checked'} */}
+      <h1 onClick={() => setNumber(2)}>{number}</h1>
     </>
   )
 }
